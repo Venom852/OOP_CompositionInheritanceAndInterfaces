@@ -47,6 +47,7 @@ object WallService {
     fun conclusionAttachments() {
         for (attachment in attachments) {
             println(attachment)
+            println()
         }
     }
 
@@ -97,6 +98,7 @@ object WallService {
 
 fun main() {
     val post = Post()
+
     val photo = Photo()
     val video = Video()
     val audio = Audio()
@@ -114,4 +116,19 @@ fun main() {
     WallService.addAttachments(userGift)
 
     WallService.conclusionAttachments()
+
+    val newPhoto: NewAttachment = NewPhoto(PhotoNewAttachments())
+    println(newPhoto.type)
+
+    val newVideo: NewAttachment = NewVideo(VideoNewAttachments())
+    println(newVideo.type)
+
+    val newAudio: NewAttachment = NewAudio(AudioNewAttachments())
+    println(newAudio.type)
+
+    val newFile: NewAttachment = NewFile(FileNewAttachments())
+    println(newFile.type)
+
+    val newUserGift: NewAttachment = NewUserGift(UserGiftNewAttachments())
+    println(newUserGift.type)
 }
