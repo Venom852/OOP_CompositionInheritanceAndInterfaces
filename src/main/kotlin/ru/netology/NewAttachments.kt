@@ -2,18 +2,18 @@ package ru.netology
 
 sealed class NewAttachment(val type: String)
 
-data class NewPhoto(val newPhoto: PhotoNewAttachments = PhotoNewAttachments()): NewAttachment("Photo")
+data class NewPhotoAttachment(val newPhoto: NewPhoto = NewPhoto()): NewAttachment("Photo")
 
-data class PhotoNewAttachments(
+data class NewPhoto(
     val id: Int = 0,
     val albumId: Int = 0,
     val ownerId: Int = 0,
     val text: String = "",
 )
 
-data class NewVideo(val newVideo: VideoNewAttachments = VideoNewAttachments()): NewAttachment("Video")
+data class NewVideoAttachment(val newVideo: NewVideo = NewVideo()): NewAttachment("Video")
 
-data class VideoNewAttachments(
+data class NewVideo(
     val id: Int = 0,
     val title: String = "",
     val ownerId: Int = 0,
@@ -21,9 +21,9 @@ data class VideoNewAttachments(
     val duration: Int = 0,
 )
 
-data class NewAudio(val newAudio: AudioNewAttachments = AudioNewAttachments()): NewAttachment("Audio")
+data class NewAudioAttachment(val newAudio: NewAudio = NewAudio()): NewAttachment("Audio")
 
-data class AudioNewAttachments(
+data class NewAudio(
     val id: Int = 0,
     val ownerId: Int = 0,
     val artist: String = "",
@@ -31,9 +31,9 @@ data class AudioNewAttachments(
     val duration: Int = 0,
 )
 
-data class NewFile(val newFile: FileNewAttachments = FileNewAttachments()): NewAttachment("File")
+data class NewFileAttachment(val newFile: NewFile = NewFile()): NewAttachment("File")
 
-data class FileNewAttachments(
+data class NewFile(
     val id: Int = 0,
     val ownerId: Int = 0,
     val title: String = "",
@@ -41,9 +41,9 @@ data class FileNewAttachments(
     val ext: String = "",
 )
 
-data class NewUserGift(val newUserGift: UserGiftNewAttachments = UserGiftNewAttachments()): NewAttachment("UserGift")
+data class NewUserGiftAttachment(val newUserGift: NewUserGift = NewUserGift()): NewAttachment("UserGift")
 
-data class UserGiftNewAttachments(
+data class NewUserGift(
     val id: Int = 0,
     val fromId: Int = 0,
     val message: String = "",
