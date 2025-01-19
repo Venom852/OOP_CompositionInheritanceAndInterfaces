@@ -4,59 +4,59 @@ interface Attachment {
     val type: String
 }
 
-data class Photo(override val type: String = "Photo"): Attachment {
-    val photo: PhotoAttachments = PhotoAttachments()
+data class PhotoAttachment(override val type: String = "Photo") : Attachment {
+    val photo: Photo = Photo()
 }
 
-data class PhotoAttachments(
+data class Photo(
     val id: Int = 0,
     val albumId: Int = 0,
     val ownerId: Int = 0,
-    val text: String = "",
+    val text: String = ""
 )
 
-data class Video(override val type: String = "Video"): Attachment {
-    val video: VideoAttachments = VideoAttachments()
+data class VideoAttachment(override val type: String = "Video") : Attachment {
+    val video: Video = Video()
 }
 
-data class VideoAttachments(
+data class Video(
     val id: Int = 0,
     val title: String = "",
     val ownerId: Int = 0,
     val description: String = "",
-    val duration: Int = 0,
+    val duration: Int = 0
 )
 
-data class Audio(override val type: String = "Audio"): Attachment {
-    val audio: AudioAttachments = AudioAttachments()
+data class AudioAttachment(override val type: String = "Audio") : Attachment {
+    val audio: Audio = Audio()
 }
 
-data class AudioAttachments(
+data class Audio(
     val id: Int = 0,
     val ownerId: Int = 0,
     val artist: String = "",
     val title: String = "",
-    val duration: Int = 0,
+    val duration: Int = 0
 )
 
-data class File(override val type: String = "File"): Attachment {
-    val file: FileAttachments = FileAttachments()
+data class FileAttachment(override val type: String = "File") : Attachment {
+    val file: File = File()
 }
 
-data class FileAttachments(
+data class File(
     val id: Int = 0,
     val ownerId: Int = 0,
     val title: String = "",
     val size: Int = 0,
-    val ext: String = "",
+    val ext: String = ""
 )
 
-data class UserGift(override val type: String = "UserGift"): Attachment {
-    val userGift: UserGiftAttachments = UserGiftAttachments()
+data class UserGiftAttachment(override val type: String = "UserGift") : Attachment {
+    val userGift: UserGift = UserGift()
 }
 
-data class UserGiftAttachments(
+data class UserGift(
     val id: Int = 0,
     val fromId: Int = 0,
-    val message: String = "",
+    val message: String = ""
 )
