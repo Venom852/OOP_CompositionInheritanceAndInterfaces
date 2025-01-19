@@ -19,7 +19,13 @@ data class Post(
     val canEdit: Boolean = false,
     val isPinned: Boolean = false,
     val markedAsAds: Boolean = false,
-)
+    var attachments: Array<Attachment> = emptyArray<Attachment>()
+) {
+    override fun equals(other: Any?): Boolean {
+        other as Post
+        return attachments.contentEquals(other.attachments)
+    }
+}
 
 data class Comments(
     val count: Int = 0,
@@ -38,14 +44,13 @@ data class Views(val count: Int = 0)
 object WallService {
     private var id: Int = 0
     private var posts = emptyArray<Post>()
-    private var attachments = emptyArray<Attachment>()
 
-    fun addAttachments(attachment: Attachment){
-        attachments += attachment
+    fun addAttachments(post: Post, attachment: Attachment) {
+        post.attachments += attachment
     }
 
-    fun conclusionAttachments() {
-        for (attachment in attachments) {
+    fun conclusionAttachments(post: Post) {
+        for (attachment in post.attachments) {
             println(attachment)
         }
     }
@@ -97,21 +102,22 @@ object WallService {
 
 fun main() {
     val post = Post()
-    val photo = Photo()
-    val video = Video()
-    val audio = Audio()
-    val file = File()
-    val userGift = UserGift()
+
+    val photo = PhotoAttachment()
+    val video = VideoAttachment()
+    val audio = AudioAttachment()
+    val file = FileAttachment()
+    val userGift = UserGiftAttachment()
 
     println(WallService.add(post))
     println(WallService.update(post))
     println()
 
-    WallService.addAttachments(photo)
-    WallService.addAttachments(video)
-    WallService.addAttachments(audio)
-    WallService.addAttachments(file)
-    WallService.addAttachments(userGift)
+    WallService.addAttachments(post, photo)
+    WallService.addAttachments(post, video)
+    WallService.addAttachments(post, audio)
+    WallService.addAttachments(post, file)
+    WallService.addAttachments(post, userGift)
 
-    WallService.conclusionAttachments()
+    WallService.conclusionAttachments(post)
 }

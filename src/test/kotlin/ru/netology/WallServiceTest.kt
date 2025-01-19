@@ -16,58 +16,65 @@ class WallServiceTest {
 
     @Test
     fun addAttachments_photo() {
-        val photo = Photo()
-        val result = WallService.addAttachments(photo)
+        val post = Post()
+        val photo = PhotoAttachment()
+        val result = WallService.addAttachments(post, photo)
 
         assertEquals(Unit, result)
     }
 
     @Test
     fun addAttachments_video() {
-        val video = Video()
-        val result = WallService.addAttachments(video)
+        val post = Post()
+        val video = VideoAttachment()
+        val result = WallService.addAttachments(post, video)
 
         assertEquals(Unit, result)
     }
 
     @Test
     fun addAttachments_audio() {
-        val audio = Audio()
-        val result = WallService.addAttachments(audio)
+        val post = Post()
+        val audio = AudioAttachment()
+        val result = WallService.addAttachments(post, audio)
 
         assertEquals(Unit, result)
     }
 
     @Test
     fun addAttachments_file() {
-        val file = File()
-        val result = WallService.addAttachments(file)
+        val post = Post()
+        val file = FileAttachment()
+        val result = WallService.addAttachments(post, file)
 
         assertEquals(Unit, result)
     }
 
     @Test
     fun addAttachments_userGift() {
-        val userGift = UserGift()
-        val result = WallService.addAttachments(userGift)
+        val post = Post()
+        val userGift = UserGiftAttachment()
+        val result = WallService.addAttachments(post, userGift)
 
         assertEquals(Unit, result)
     }
+
     @Test
     fun conclusionAttachments_attachments() {
-        val photo = Photo()
-        val video = Video()
-        val audio = Audio()
-        val file = File()
-        val userGift = UserGift()
+        val post = Post()
+        val photo = PhotoAttachment()
+        val video = VideoAttachment()
+        val audio = AudioAttachment()
+        val file = FileAttachment()
+        val userGift = UserGiftAttachment()
 
-        WallService.addAttachments(photo)
-        WallService.addAttachments(video)
-        WallService.addAttachments(audio)
-        WallService.addAttachments(file)
-        WallService.addAttachments(userGift)
+        WallService.addAttachments(post, photo)
+        WallService.addAttachments(post, video)
+        WallService.addAttachments(post, audio)
+        WallService.addAttachments(post, file)
+        WallService.addAttachments(post, userGift)
 
-        val result = WallService.conclusionAttachments()
+        val result = WallService.conclusionAttachments(post)
 
         assertEquals(Unit, result)
     }
