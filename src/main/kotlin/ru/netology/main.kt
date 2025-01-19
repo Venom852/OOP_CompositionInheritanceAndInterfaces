@@ -22,8 +22,26 @@ data class Post(
     var attachments: Array<Attachment> = emptyArray<Attachment>()
 ) {
     override fun equals(other: Any?): Boolean {
-        other as Post
-        return attachments.contentEquals(other.attachments)
+        if (this === other) return true
+        if (other !is Post) return false
+
+        return id == other.id &&
+                ownerId == other.ownerId &&
+                fromId == other.fromId &&
+                date == other.date &&
+                text == other.text &&
+                replyOwnerId == other.replyOwnerId &&
+                replyPostId == other.replyPostId &&
+                comments == other.comments &&
+                likes == other.likes &&
+                reposts == other.reposts &&
+                views == other.views &&
+                canPin == other.canPin &&
+                canDelete == other.canDelete &&
+                canEdit == other.canEdit &&
+                isPinned == other.isPinned &&
+                markedAsAds == other.markedAsAds &&
+                attachments.contentEquals(other.attachments)
     }
 }
 
